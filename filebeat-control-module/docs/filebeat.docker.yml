@@ -1,0 +1,56 @@
+name: filebeat-specific
+setup:
+  ilm.enabled: false
+  # template:
+  #   enabled: true
+  #   overwrite: true
+  #   name: docker-logs
+  #   pattern: docker-logs-*
+  #   settings:
+  #     index.number_of_shards: 1  
+  #     index.number_of_replicas: 0 
+  #     index.lifecycle.name: 90-days-default
+  #     kibana.host: "http://192.168.9.5:5601"
+  #     dashboards.enabled: true
+
+filebeat.inputs:
+  - type: container
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: 3
+    ignore_older: 24h
+    scan_frequency: 1s
+    processors:
+      - add_host_metadata: ~
+      - add_cloud_metadata: ~
+      - add_docker_metadata: ~
+      - drop_event:
+          when:
+            not:
+              or:
+                - and:
+                    - regexp.message: "^(ERR|WARN).*"
+                    - not.regexp.message: "somesomesome"
+                - contains.message: "payload"
+                - regexp:
+                    message: "Starting"
+
+    fields:
+      container_type: docker
+      environment: client-1
+      team: devops
+    paths:
+      - /var/lib/docker/containers/*/*.log
+
+output.elasticsearch:
+  protocol: http
+  hosts:
+    - ${ELASTICSEARCH_HOST}
+  indices:
+    - index: "error-chain-%{[agent.version]}"
+      when:
+        or: 
+          - regexp.message: "^(ERR|WARN).*"
+    - index: "chain-%{[agent.version]}-%{+yyyy.MM.dd}"

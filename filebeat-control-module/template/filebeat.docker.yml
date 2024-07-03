@@ -1,0 +1,43 @@
+name: ${AGENT_NAME}
+setup:
+  ilm.enabled: false                            # 기본 index lifecycle management 사용 안함
+  template:
+    enabled: true                               # 사용자 정의 템플릿 사용 선언
+    overwrite: true                             # 새로운 탬플릿으로 덮어쓰기
+    name: ${TEMPLATE_NAME}                      # 탬플릿 이름(lim 정책을 정의할 이름)
+    pattern: ${TEMPLATE_PATTERN}                # lim 정책을 적용할 index pattern
+    settings:
+      index.number_of_shards: 1                 # primary shard 1개 
+      index.number_of_replicas: 0               # replia shard 사용안함 
+      index.lifecycle.name: 180-days-default    # 기본 Preset중 하나인 180-days-default 정책 사용
+
+filebeat.inputs:
+  - type: container
+    logging: # disk-exhaustion 방지 ( https://docs.docker.com/config/containers/logging/configure )
+      driver: local
+      options:
+        max-size: 10m
+        max-file: 3
+    processors: # 로그 수집 조건 및 메타데이터 수집 명시
+      - add_host_metadata: ~
+      - add_cloud_metadata: ~
+      - add_docker_metadata: ~
+      - drop_event:
+          when:
+            not:
+              or:
+                - and:
+                    - regexp.message: "^(ERR|WARN).*"
+                    - not.regexp.message: "latest L1 block is old"
+                - contains.message: "Submitted transaction"
+                - contains.message: "Data poster transactions confirmed"
+    fields: # 사용자 정의 필드 공간
+      id: ${AGENT_ID}
+    paths:  # 수집할 로그 파일 위치
+      - /var/lib/docker/containers/*/*.log
+
+output.elasticsearch: # elasticsearch 접속 정보 및 index 설정 정보
+  protocol: http
+  hosts:
+    - ${ELASTICSEARCH_HOST}
+  index: chain-%{+yyyy.MM.dd}
