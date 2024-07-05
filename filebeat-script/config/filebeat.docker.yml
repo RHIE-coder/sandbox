@@ -38,3 +38,4 @@ output.elasticsearch: # elasticsearch 접속 정보 및 index 설정 정보
   hosts:
     - ${ELASTICSEARCH_HOST}
   index: ${AGENT_NAME}-%{+yyyy.MM.dd}
+  pipeline: extract_number

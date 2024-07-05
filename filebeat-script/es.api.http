@@ -272,8 +272,7 @@ Content-Type: application/json
   }
 }
 
-
-###
+### rollover-policy와 index 맵핑하기-1
 
 PUT http://192.168.9.5:9200/_template/chain-error-template
 Content-Type: application/json
@@ -285,7 +284,7 @@ Content-Type: application/json
   }
 }
 
-###
+### rollover-policy와 index 맵핑하기-2
 
 PUT http://192.168.9.5:9200/_template/chain-template
 Content-Type: application/json
@@ -297,11 +296,38 @@ Content-Type: application/json
   }
 }
 
-###
+### template 확인(rollover-policy와 index 맵핑하기-1 결과)
 
 GET http://192.168.9.5:9200/_template/chain-error-template
 
 
-###
+### template 확인(rollover-policy와 index 맵핑하기-2 결과)
 
 GET http://192.168.9.5:9200/_template/chain-template
+
+
+###################################################
+#####
+##### ingest pipeline 추가
+#####
+###################################################
+PUT http://192.168.9.5:9200/_ingest/pipeline/extract_number
+Content-Type: application/json
+
+{
+  "description": "Extract number from message",
+  "processors": [
+    {
+      "grok": {
+        "field": "message",
+        "patterns": ["number=%{NUMBER:number}"]
+      }
+    },
+    {
+      "convert": {
+        "field": "number",
+        "type": "long"
+      }
+    }
+  ]
+}
