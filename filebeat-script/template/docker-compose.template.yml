@@ -1,21 +1,21 @@
 services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:7.17.11
-    container_name: filebeat
-    logging:
+    container_name: ${CONTAINER_NAME}
+    logging: # disk-exhaustion 방지 ( https://docs.docker.com/config/containers/logging/configure )
       driver: local
       options:
         max-size: 10m
         max-file: 3
     user: root
     volumes:
-      - ./filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./config/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
       - ./.registry:/usr/share/filebeat/data/registry
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-    environment:
+      - /var/lib/docker/containers/*/*.log # 특정 container log들이 주입될 위치
+    environment: # filebeat.yml에서 사용할 환경변수들
       ELASTICSEARCH_HOST: ${ELASTICSEARCH_HOST}
-      AGENT_ID: ${AGENT_ID}
+      AGENT_FIELD_ID: ${AGENT_FIELD_ID}
       AGENT_NAME: ${AGENT_NAME}
       TEMPLATE_NAME: ${TEMPLATE_NAME}
       TEMPLATE_PATTERN: ${TEMPLATE_PATTERN}
