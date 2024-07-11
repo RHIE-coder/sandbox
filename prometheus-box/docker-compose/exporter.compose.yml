@@ -1,0 +1,34 @@
+services:
+  node-exporter:
+    image: prom/node-exporter
+    container_name: node-exporter
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+    ports:
+     - 9100:9100
+    networks:
+     - promclient
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    container_name: cadvisor
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+    volumes:
+     - /:/rootfs:ro
+     - /var/run:/var/run:rw
+     - /sys:/sys:ro
+     - /var/lib/docker/:/var/lib/docker:ro
+     - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+     - 9105:8080
+    networks:
+     - promclient
+
+networks:
+  promclient:
+    driver: bridge

@@ -1,0 +1,52 @@
+services:
+  prometheus:
+    image: prom/prometheus:v2.53.1
+    container_name: prometheus
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+    volumes:
+     - ../config/prometheus.yml:/etc/prometheus/prometheus.yml
+     - ../config/alert_rules.yml:/etc/prometheus/alert_rules.yml
+     - ../.prometheus:/prometheus
+    ports:
+     - 9090:9090
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=90d # 90일보다 오래된 metrics는 삭제
+      - --storage.tsdb.retention.size=10GB # 10GB를 넘을 시 오래된 metrics 삭제
+    networks:
+     - promserver
+
+  alertmanager:
+    image: prom/alertmanager:v0.24.0
+    container_name: alertmanager
+    volumes:
+      - ../config/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    ports:
+      - "9093:9093"
+    networks:
+      - promserver
+
+  grafana:
+    image: grafana/grafana:11.1.0
+    container_name: grafana
+    logging:
+      options:
+        max-size: 10m
+        max-file: 3
+    ports:
+      - 3000:3000
+    volumes:
+      - ../.grafana:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=test
+      - GF_SECURITY_ADMIN_PASSWORD=1234
+    networks:
+      - promserver 
+
+networks:
+  promserver:
+    driver: bridge

@@ -1,0 +1,6 @@
+GET http://localhost:9090/api/v1/label/__name__/values
+
+###
+# GET http://localhost:9090/api/v1/label/<label_name>/values
+###
+GET http://localhost:9090/api/v1/label/container_cpu_load_average_10s/values
