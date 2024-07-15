@@ -25,6 +25,7 @@ services:
     container_name: alertmanager
     volumes:
       - ../config/alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ../config/templates:/etc/alertmanager/templates
     ports:
       - "9093:9093"
     networks:

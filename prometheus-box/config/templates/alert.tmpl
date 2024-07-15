@@ -1,0 +1,13 @@
+{{ define "slack.title" }}
+[{{ .Status | toUpper }}] {{ .GroupLabels.job }} - {{ .CommonLabels.instance }}
+{{ end }}
+
+{{ define "slack.text" }}
+Alert: {{ .Annotations.summary }}
+Description: {{ .Annotations.description }}
+Details:
+  - Alertname: {{ .Labels.alertname }}
+  - Severity: {{ .Labels.severity }}
+  - Instance: {{ .Labels.instance }}
+  - Job: {{ .Labels.job }}
+{{ end }}

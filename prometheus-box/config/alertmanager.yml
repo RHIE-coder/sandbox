@@ -14,3 +14,6 @@ receivers:
       - api_url: 'https://hooks.slack.com/services/<ID>'
         channel: '#alert'
         send_resolved: true
+
+templates:
+  - '/etc/alertmanager/templates/*.tmpl'
