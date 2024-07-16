@@ -6,7 +6,7 @@ function main()
             docker run -itd --name nginx-test nginx
             echo
             ;;
-        "rm")
+        "kill")
             echo "Kill container to test"
             docker rm -f nginx-test
             echo

@@ -1,6 +1,6 @@
 global:
   scrape_interval: 10s
-  evaluation_interval: 5s # 규칙 평가 간격
+  evaluation_interval: 5s 
 
 
 alerting:

@@ -1,15 +1,3 @@
-# groups:
-#   - name: alert_rules
-#     rules:
-#       - alert: MyAppContainerDown
-#         expr: up{job="node-exporter", instance="host.docker.internal:9100"} == 0
-#         for: 3s
-#         labels:
-#           severity: critical
-#         annotations:
-#           summary: "MyApp container down"
-#           description: "The Docker container for MyApp is down for more than 1 minute."
-
 groups:
   - name: alert_rules
     rules:
