@@ -1,0 +1,66 @@
+services:
+  redis:
+    image: redis:7.2.5
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./.docker/redis/data:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3
+
+  rabbitmq:
+    image: rabbitmq:3.13.3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"    # RabbitMQ 메시징 포트
+      - "15672:15672"  # RabbitMQ 관리 콘솔 포트
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3  
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      TZ: ${MYSQL_TZ}
+      ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql # MySQL 영속성 데이터
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3  
+
+volumes:
+  mysql-data:
+    driver: local  
+
+networks:
+  infranet:
+    driver: bridge
+
+# 가동 후 필요: docker exec rabbitmq rabbitmq-plugins enable rabbitmq_management
