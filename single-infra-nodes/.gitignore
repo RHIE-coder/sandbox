@@ -1,0 +1,11 @@
+.env
+.docker/
+redis.conf
+node_modules
+*.crt
+*.csr
+*.key
+*.p12
+*.srl
+*.jks
+kafka-ssl-credentials.properties

@@ -1,0 +1,20 @@
+{
+  "name": "single-infra-nodes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "rabbitmq-producer": "node ./js-validate/rabbitmq/producer",
+    "rabbitmq-consumer": "node ./js-validate/rabbitmq/consumer",
+    "kafka-producer": "node ./js-validate/kafka/producer.js",
+    "kafka-consumer": "node ./js-validate/kafka/consumer.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "dotenv": "^16.4.5",
+    "kafkajs": "^2.2.4"
+  }
+}

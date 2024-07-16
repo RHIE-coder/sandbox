@@ -1,0 +1,215 @@
+services:
+  redis:
+    image: redis:7.2.5
+    container_name: redis
+    ports:
+      - 6379:6379
+    volumes:
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf
+      - ./.docker/redis/data:/data
+    command: ["redis-server", "/usr/local/etc/redis/redis.conf"]
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3
+
+  rabbitmq:
+    image: rabbitmq:3.13.3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"    # RabbitMQ 메시징 포트
+      - "15672:15672"  # RabbitMQ 관리 콘솔 포트
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3  
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      TZ: ${MYSQL_TZ}
+      ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql-data:/var/lib/mysql # MySQL 영속성 데이터
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3  
+# docker exec -it mysql mysql -u root -p
+# SELECT User, Host FROM mysql.user;
+# show DATABASES;
+
+  mariadb:
+    image: mariadb:11.4.2
+    container_name: mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      TZ: ${MARIADB_TZ}
+      ALLOW_EMPTY_PASSWORD: ${MARIADB_ALLOW_EMPTY_PASSWORD}
+    ports:
+      - 3316:3306
+    volumes:
+      - mariadb-data:/var/lib/mysql  # MySQL 영속성 데이터
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m  
+        max-file: 3  
+# docker exec -it mariadb mariadb -u root -p
+# SELECT User, Host FROM mysql.user;
+# show DATABASES;
+  mongodb:
+    image: mongo:6.0.1
+    container_name: mongo
+    restart: always
+    ports:
+      - 27654:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME:${MONGO_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD:${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - infranet
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.2.1
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 2181:2181
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+  kafka:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - infranet
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: 3
+
+  ############################################################################
+  #
+  #        Secure Version But Need Learning 
+  #
+  ############################################################################
+  # zookeeper:
+  #   image: confluentinc/cp-zookeeper:7.2.1
+  #   container_name: zookeeper
+  #   environment:
+  #     ZOOKEEPER_CLIENT_PORT: 2181
+  #     ZOOKEEPER_TICK_TIME: 2000
+  #     ZOOKEEPER_SECURE_CLIENT_PORT: 2281
+  #     ZOOKEEPER_SSL_KEYSTORE_LOCATION: /var/private/ssl/zookeeper.keystore.jks
+  #     ZOOKEEPER_SSL_KEYSTORE_PASSWORD: ${SSL_PASSWORD}
+  #     ZOOKEEPER_SSL_TRUSTSTORE_LOCATION: /var/private/ssl/zookeeper.truststore.jks
+  #     ZOOKEEPER_SSL_TRUSTSTORE_PASSWORD: ${SSL_PASSWORD}
+  #     ZOOKEEPER_SERVER_CNXN_FACTORY: org.apache.zookeeper.server.NettyServerCnxnFactory
+  #   ports:
+  #     - 2181:2181
+  #     - 2281:2281
+  #   volumes:
+  #     - ./config/zookeeper:/var/private/ssl
+  #   networks:
+  #     - infranet
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: 10m
+  #       max-file: 3
+  ############################################################################
+  # kafka:
+  #   image: confluentinc/cp-kafka:7.2.1
+  #   container_name: kafka
+  #   depends_on:
+  #     - zookeeper
+  #   ports:
+  #     - 9092:9092
+  #     - 9093:9093
+  #   environment:
+  #     KAFKA_BROKER_ID: 1
+  #     KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  #     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,SSL://localhost:9093
+  #     KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,SSL:SSL
+  #     KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+  #     KAFKA_SSL_KEYSTORE_PASSWORD: ${SSL_PASSWORD}
+  #     KAFKA_SSL_KEY_PASSWORD: ${SSL_PASSWORD}
+  #     KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+  #     KAFKA_SSL_TRUSTSTORE_PASSWORD: ${SSL_PASSWORD}
+  #     KAFKA_SASL_ENABLED_MECHANISMS: PLAIN,SCRAM-SHA-256,SCRAM-SHA-512
+  #     KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: PLAIN
+  #     KAFKA_SUPER_USERS: User:admin
+  #     KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: 'false'
+  #     KAFKA_SSL_KEYSTORE_FILENAME: kafka.keystore.jks
+  #     KAFKA_SSL_TRUSTSTORE_FILENAME: kafka.truststore.jks
+  #     KAFKA_SSL_KEY_CREDENTIALS: kafka-ssl-credentials.properties
+  #     KAFKA_SSL_KEYSTORE_CREDENTIALS: kafka-ssl-credentials.properties
+  #     KAFKA_SSL_KEY_CREDENTIALS_PASSWORD: ${SSL_PASSWORD}
+  #     KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'false'
+  #     KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+  #   volumes:
+  #     - ./config/kafka:/etc/kafka/secrets
+  #   networks:
+  #     - infranet
+  #   logging:
+  #     driver: json-file
+  #     options:
+  #       max-size: 10m
+  #       max-file: 3
+  ############################################################################
+
+volumes:
+  mysql-data:
+    driver: local  
+  mariadb-data:
+    driver: local
+  mongodb-data:
+    driver: local
+
+networks:
+  infranet:
+    driver: bridge
