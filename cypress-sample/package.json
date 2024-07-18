@@ -1,0 +1,17 @@
+{
+  "name": "cypress-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run-head": "cypress run --headed",
+    "cy:run-browser": "cypress run --browser chrome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^13.13.1"
+  }
+}
