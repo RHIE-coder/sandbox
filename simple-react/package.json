@@ -11,8 +11,7 @@
     "test": "jest",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:head": "cypress run --headed --no-exit",
-    "cy:chrome": "cypress run --browser chrome"
+    "cy:head": "cypress run --headed --no-exit"
   },
   "license": "MIT",
   "dependencies": {

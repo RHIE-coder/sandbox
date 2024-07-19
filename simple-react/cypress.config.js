@@ -8,5 +8,5 @@ export default defineConfig({
   port: 9999,
   video: true,
   // projectId: "<input if you use cypress cloud>",
-  // CLI: npx cypress run --record --key <UUID>
+  //  -->  npx cypress run --record --key <UUID>
 });
