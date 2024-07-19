@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-07-19T03:00:02.120Z",
+    "end": "2024-07-19T03:00:02.157Z",
+    "duration": 37,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b9c81daa-2bcf-4588-b43f-9527ddf24eac",
+      "title": "",
+      "fullFile": "cypress/e2e/mocha.cy.js",
+      "file": "cypress/e2e/mocha.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c3632620-7f29-4a48-bf14-81fde5cad0bb",
+          "title": "test suite",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should add context",
+              "fullTitle": "test suite should add context",
+              "timedOut": null,
+              "duration": 8,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// context can be a simple string\naddContext(this, 'simple string');\n// context can be a url and the report will create a link\naddContext(this, 'http://www.url.com/pathname');\n// context can be an image url and the report will show it inline\naddContext(this, 'http://www.url.com/screenshot-maybe.jpg');\n// context can be an object with title and value properties\naddContext(this, {\n  title: 'expected output',\n  value: {\n    a: 1,\n    b: '2',\n    c: 'd'\n  }\n});",
+              "err": {},
+              "uuid": "79936d4c-17e5-42e6-9c29-4d83455598e2",
+              "parentUUID": "c3632620-7f29-4a48-bf14-81fde5cad0bb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "79936d4c-17e5-42e6-9c29-4d83455598e2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 8,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
