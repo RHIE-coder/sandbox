@@ -6,7 +6,10 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:head": "cypress run --headed --no-exit",
-    "marge": "npx mochawesome-merge \"cypress/reports/*.json\" > mochawesome.json && npx marge mochawesome.json"
+    "clean": "rimraf cypress/reports cypress/mochawesome.json mochawesome-report",
+    "marge": "mochawesome-merge \"cypress/reports/*.json\" > ./cypress/mochawesome.json && npx marge ./cypress/mochawesome.json",
+    "update": "npm run clean && sleep 1 && npm run cy:run && sleep 1 && npm run marge"
+
   },
   "keywords": [],
   "author": "",
@@ -18,6 +21,8 @@
   "dependencies": {
     "mochawesome": "^7.1.3",
     "mochawesome-merge": "^4.3.0",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "rimraf": "^6.0.1",
+    "sleep": "^6.3.0"
   }
 }

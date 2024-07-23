@@ -1,1 +1,6 @@
 node_modules
+mochawesome-report/
+cypress/e2e/mochawesome.json
+cypress/e2e/reports/
+cypress/e2e/videos/
+cypress/e2e/screenshots/

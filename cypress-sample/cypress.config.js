@@ -7,6 +7,10 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
   },
+  port: 9999,
+  video: true,
+  // projectId: "<input if you use cypress cloud>",
+  //  -->  npx cypress run --record --key <UUID>
 
   component: {
     devServer: {
