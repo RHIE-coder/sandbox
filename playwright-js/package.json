@@ -1,0 +1,23 @@
+{
+  "name": "playwright-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "pw:test":"playwright test --reporter=list",
+    "pw:test:ui":"playwright test --ui",
+    "pw:test:chrome":"playwright test --project=chromium",
+    "pw:test:firefox":"playwright test --project=firefox",
+    "pw:test:safari":"playwright test --project=webkit",
+    "pw:test:debug":"playwright test --debug",
+    "pw:codegen":"playwright codegen",
+    "pw:test:one-by-one": " playwright test --headed --workers 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^22.0.0"
+  }
+}

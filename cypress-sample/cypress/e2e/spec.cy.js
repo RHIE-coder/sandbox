@@ -1,5 +1,7 @@
 describe('template spec', () => {
-  it('passes', () => {
-    cy.visit('http://localhost:3000')
+  it('clicks the link "type"', () => {
+    cy.visit('https://example.cypress.io')
+
+    cy.contains('type').click()
   })
 })
