@@ -1,4 +1,10 @@
-venv
+.venv
 .pytest_cache
 __pycache__
 pytestdebug.log
+test-results
+outputs
+reports
+build
+.DS_STORE
+.vscode

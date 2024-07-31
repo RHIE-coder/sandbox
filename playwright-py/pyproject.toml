@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "tcserver"
+version = "0.1.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest-playwright = "^0.5.1"
+pytest-html = "^4.1.1"
+pytest-xdist = "^3.6.1"
+playwright = "^1.45.1"
+
+[tool.poetry.scripts] 
+say_hello = "tcserver.scripts:say_hello"
+run_server = "tcserver.scripts:run_server"
+
+[tool.pytest.ini_options]
+# testpaths = "tests"
+addopts = [
+#     '-v',
+#     '--browser=chromium',
+#     '--browser=firefox',
+#     '--browser=webkit',
+    '--headed',
+    '--slowmo=1000',
+#     '--numprocesses=auto',
+#     '--output=test-results',
+#     '--tracing=retain-on-failure',    # on, off, retain-on-failure
+#     '--video=retain-on-failure',      # on, off, retain-on-failure
+#     '--screenshot=only-on-failure',   # on, off, only-on-failure
+#     '--html=reports/playwright-report.html',
+#     # '--device=iPhone 11 Pro',
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
