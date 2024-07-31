@@ -8,14 +8,12 @@ from pages.navbar_page import Navbar
 def base_url():
     return 'https://react-redux.realworld.io/'
 
-
 @pytest.fixture
 def page(page: Page) -> Page:
     timeout = 10000
     page.set_default_navigation_timeout(timeout)
     page.set_default_timeout(timeout)
     return page
-
 
 @pytest.fixture
 def login(page) -> Login:
