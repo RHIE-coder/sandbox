@@ -10,7 +10,8 @@
     "pw:test:safari":"playwright test --project=webkit",
     "pw:test:debug":"playwright test --debug",
     "pw:codegen":"playwright codegen",
-    "pw:test:one-by-one": " playwright test --headed --workers 1"
+    "pw:test:one-by-one": " playwright test --headed --workers 1",
+    "tcserver":"node src/server"
   },
   "keywords": [],
   "author": "",

@@ -29,6 +29,9 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    launchOptions: {
+      slowMo: 1000
+    }
     // contextOptions: {recordVideo: { dir: "./videos/"}},
     // video: {
     //   mode: 'on',
@@ -42,23 +45,23 @@ module.exports = defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: {
-        contextOptions: {recordVideo: { dir: "videos/"}}
-        ,...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     contextOptions: {recordVideo: { dir: "videos/"}}
+    //     ,...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
-    /* Test against mobile viewports. */
-    {
-      name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
-    },
+    // /* Test against mobile viewports. */
+    // {
+    //   name: 'Mobile Chrome',
+    //   use: { ...devices['Pixel 5'] },
+    // },
     // {
     //   name: 'Mobile Safari',
     //   use: { ...devices['iPhone 12'] },
