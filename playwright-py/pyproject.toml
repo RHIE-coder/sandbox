@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "tcserver"
+name = "qamanager"
 version = "0.1.0"
 description = ""
 authors = []
@@ -13,18 +13,18 @@ playwright = "^1.45.1"
 pytest-json-report = "^1.5.0"
 
 [tool.poetry.scripts] 
-say_hello = "tcserver.scripts:say_hello"
-run_server = "tcserver.scripts:run_server"
+say_hello = "qamanager.scripts:say_hello"
+run_server = "qamanager.scripts:run_server"
 
 [tool.pytest.ini_options]
-testpaths = "tests"
+testpaths = "tests-onepage"
 addopts = [
     '-v',
     # '--browser=chromium',
     # '--browser=firefox',
     # '--browser=webkit',
     '--headed',
-    '--slowmo=1000',
+    # '--slowmo=1000',
     # '--json-report',
     # '--json-report-file=json-reports/test-results.json',
     # '--numprocesses=auto',

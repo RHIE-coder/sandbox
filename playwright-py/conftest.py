@@ -3,7 +3,6 @@
 # from pages.login_page import Login
 # from pages.navbar_page import Navbar
 
-
 # @pytest.fixture(scope='session')
 # def base_url():
 #     return 'https://react-redux.realworld.io/'

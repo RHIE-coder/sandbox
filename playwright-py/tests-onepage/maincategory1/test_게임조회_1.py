@@ -1,6 +1,5 @@
 import pytest
 from playwright.sync_api import Page, expect
-import logging
 
 @pytest.fixture(scope="function", autouse=True)
 def before_each_after_each(page: Page):
@@ -36,11 +35,12 @@ def test_detail_3(page: Page):
     """
     page.get_by_placeholder("What needs to be done?").fill("Rhie1234 민!@#")
 
+@pytest.mark.xfail(reasone="manual testing")
 def test_detail_4(page: Page):
     """
     입력한 문구가 입력창 길이를 넘어가면 wrap되어야 한다.
     """
-    logging.warning("manual testing")
+    # logging.warning("manual testing")
     pass
 
 def test_detail_5(page: Page):
