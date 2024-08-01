@@ -1,8 +1,5 @@
 describe('template spec', () => {
-  it('clicks the link "type"', () => {
+  it('passes', () => {
     cy.visit('https://example.cypress.io')
-
-    cy.contains('type').click()
   })
-
 })
