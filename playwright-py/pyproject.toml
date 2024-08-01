@@ -20,19 +20,19 @@ run_server = "tcserver.scripts:run_server"
 testpaths = "tests"
 addopts = [
     '-v',
-#     '--browser=chromium',
-#     '--browser=firefox',
-#     '--browser=webkit',
+    # '--browser=chromium',
+    # '--browser=firefox',
+    # '--browser=webkit',
     '--headed',
     '--slowmo=1000',
-    '--json-report',
-    '--json-report-file=json-reports/test-results.json',
-#     '--numprocesses=auto',
-#     '--output=test-results',
-#     '--tracing=retain-on-failure',    # on, off, retain-on-failure
-#     '--video=retain-on-failure',      # on, off, retain-on-failure
-#     '--screenshot=only-on-failure',   # on, off, only-on-failure
-#     '--html=reports/playwright-report.html',
+    # '--json-report',
+    # '--json-report-file=json-reports/test-results.json',
+    # '--numprocesses=auto',
+    # '--output=test-results',
+    # '--tracing=retain-on-failure',    # on, off, retain-on-failure
+    # '--video=retain-on-failure',      # on, off, retain-on-failure
+    # '--screenshot=only-on-failure',   # on, off, only-on-failure
+    # '--html=reports/playwright-report.html',
 #     # '--device=iPhone 11 Pro',
 ]
 

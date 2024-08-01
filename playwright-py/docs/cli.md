@@ -32,9 +32,18 @@ PWDEBUG=1 pytest -s
 
 # Report
 
+ - html
+
 ```sh
 pip install pytest-html
-pytest -s -v  --headed --browser chromium --browser firefox --browser webkit --html=pwreport.html
+pytest -v  --headed --browser chromium --browser firefox --browser webkit --html=pwreport.html
+```
+
+ - json
+
+```sh
+pytest-json-report
+pytest --json-report --json-report-file=test-results.json
 ```
 
 # Parallelism
