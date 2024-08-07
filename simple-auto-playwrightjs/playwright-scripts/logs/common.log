@@ -1,0 +1,39 @@
+{"level":"error","message":{"error":"회원가입 링크 동작 안함","id":"TC6","result":"FAIL","spec":"회원가입 링크 문구 동작 확인","timestamp":1723008387729}}
+{"level":"info","message":{"error":null,"id":"TC1","result":"PASS","spec":"로그인 버튼 활성 상태 확인","timestamp":1723008388626}}
+{"level":"info","message":{"error":null,"id":"TC2","result":"PASS","spec":"username 입력 확인","timestamp":1723008389171}}
+{"level":"info","message":{"error":null,"id":"TC3","result":"PASS","spec":"password 입력 확인","timestamp":1723008389745}}
+{"level":"info","message":{"error":null,"id":"TC4","result":"PASS","spec":"remeber checkbox 입력 확인","timestamp":1723008390293}}
+{"level":"info","message":{"error":null,"id":"TC5","result":"PASS","spec":"로그인 버튼 동작 확인","timestamp":1723008390826}}
+{"level":"info","message":{"error":null,"id":"TC2","result":"PASS","spec":"firstName 도움말 확인","timestamp":1723008392821}}
+{"level":"info","message":{"error":null,"id":"TC4","result":"PASS","spec":"lastName 도움말 확인","timestamp":1723008393874}}
+{"level":"info","message":{"error":null,"id":"TC6","result":"PASS","spec":"username 도움말 확인","timestamp":1723008394921}}
+{"level":"info","message":{"error":null,"id":"TC8","result":"PASS","spec":"password 도움말 확인","timestamp":1723008395974}}
+{"level":"info","message":{"error":null,"id":"TC9","result":"PASS","spec":"confirmPassword 도움말 확인","timestamp":1723008397023}}
+{"level":"info","message":{"error":null,"id":"TC1","result":"PASS","spec":"firstName 입력 확인","timestamp":1723008398456}}
+{"level":"info","message":{"error":null,"id":"TC3","result":"PASS","spec":"lastName 입력 확인","timestamp":1723008398980}}
+{"level":"info","message":{"error":null,"id":"TC5","result":"PASS","spec":"username 입력 확인","timestamp":1723008399511}}
+{"level":"info","message":{"error":null,"id":"TC7","result":"PASS","spec":"password 입력 확인","timestamp":1723008400076}}
+{"level":"info","message":{"error":null,"id":"TC8","result":"PASS","spec":"confirmPassword 입력 확인","timestamp":1723008400597}}
+{"level":"info","message":{"error":null,"id":"TC10","result":"PASS","spec":"회원가입 버튼 동작 확인","timestamp":1723008401133}}
+{"level":"info","message":{"error":null,"id":"TC1","result":"PASS","spec":"로그인 버튼 활성 상태 확인","timestamp":1723008402008}}
+{"level":"info","message":{"error":null,"id":"TC2","result":"PASS","spec":"username 입력 확인","timestamp":1723008402550}}
+{"level":"info","message":{"error":null,"id":"TC3","result":"PASS","spec":"password 입력 확인","timestamp":1723008403121}}
+{"level":"info","message":{"error":null,"id":"TC4","result":"PASS","spec":"remeber checkbox 입력 확인","timestamp":1723008403670}}
+{"level":"info","message":{"error":null,"id":"TC5","result":"PASS","spec":"로그인 버튼 동작 확인","timestamp":1723008404211}}
+{"level":"info","message":{"error":null,"id":"TC1","result":"PASS","spec":"로그인 버튼 활성 상태 확인","timestamp":1723008500434}}
+{"level":"info","message":{"error":null,"id":"TC2","result":"PASS","spec":"username 입력 확인","timestamp":1723008500976}}
+{"level":"info","message":{"error":null,"id":"TC2","result":"PASS","spec":"firstName 도움말 확인","timestamp":1723008501490}}
+{"level":"info","message":{"error":null,"id":"TC3","result":"PASS","spec":"password 입력 확인","timestamp":1723008501517}}
+{"level":"error","message":{"error":"회원가입 링크 동작 안함","id":"TC6","result":"FAIL","spec":"회원가입 링크 문구 동작 확인","timestamp":1723008501546}}
+{"level":"info","message":{"error":null,"id":"TC4","result":"PASS","spec":"remeber checkbox 입력 확인","timestamp":1723008502053}}
+{"level":"info","message":{"error":null,"id":"TC4","result":"PASS","spec":"lastName 도움말 확인","timestamp":1723008502535}}
+{"level":"info","message":{"error":null,"id":"TC5","result":"PASS","spec":"로그인 버튼 동작 확인","timestamp":1723008502582}}
+{"level":"info","message":{"error":null,"id":"TC1","result":"PASS","spec":"firstName 입력 확인","timestamp":1723008503011}}
+{"level":"info","message":{"error":null,"id":"TC3","result":"PASS","spec":"lastName 입력 확인","timestamp":1723008503542}}
+{"level":"info","message":{"error":null,"id":"TC6","result":"PASS","spec":"username 도움말 확인","timestamp":1723008503578}}
+{"level":"info","message":{"error":null,"id":"TC5","result":"PASS","spec":"username 입력 확인","timestamp":1723008504072}}
+{"level":"info","message":{"error":null,"id":"TC8","result":"PASS","spec":"password 도움말 확인","timestamp":1723008504624}}
+{"level":"info","message":{"error":null,"id":"TC7","result":"PASS","spec":"password 입력 확인","timestamp":1723008504641}}
+{"level":"info","message":{"error":null,"id":"TC8","result":"PASS","spec":"confirmPassword 입력 확인","timestamp":1723008505167}}
+{"level":"info","message":{"error":null,"id":"TC9","result":"PASS","spec":"confirmPassword 도움말 확인","timestamp":1723008505673}}
+{"level":"info","message":{"error":null,"id":"TC10","result":"PASS","spec":"회원가입 버튼 동작 확인","timestamp":1723008505705}}

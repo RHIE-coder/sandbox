@@ -1,0 +1,32 @@
+{
+  "name": "simple-auto-playwrightjs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "pw:test": "playwright test --reporter=list",
+    "pw:test:ui": "playwright test --ui",
+    "pw:test:chrome": "playwright test --project=chromium",
+    "pw:test:firefox": "playwright test --project=firefox",
+    "pw:test:safari": "playwright test --project=webkit",
+    "pw:test:debug": "playwright test --debug",
+    "pw:codegen": "playwright codegen",
+    "pw:test:one": "playwright test --headed --workers 3",
+    "tcserver": "node src/server",
+    "pw:test:retries": "playwright test --headed --workers=1 --retries=3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "description": "",
+  "devDependencies": {
+    "@playwright/browser-chromium": "^1.46.0",
+    "@playwright/browser-firefox": "^1.46.0",
+    "@playwright/browser-webkit": "^1.46.0",
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^22.0.0"
+  },
+  "dependencies": {
+    "winston": "^3.13.1"
+  }
+}
