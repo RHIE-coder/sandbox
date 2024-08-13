@@ -26,6 +26,8 @@ dev-dependencies = []
 
 [tool.rye.scripts]
 xtest = "pytest -s"
+xtestv = "pytest -s -v"
+xcollect = "pytest --collect-only"
 
 
 [tool.pytest.ini_options]
