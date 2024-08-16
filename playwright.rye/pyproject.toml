@@ -20,7 +20,7 @@ pythonpath = "src"
 testpaths = "tests"
 
 [tool.rye.scripts]
-thead = 'pytest --headed'
+thead = 'pytest --headed --slowmo 1000'
 
     # '--browser=chromium',
     # '--browser=firefox',

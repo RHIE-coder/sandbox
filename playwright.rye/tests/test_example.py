@@ -1,24 +1,50 @@
-import re
 import pytest
-from playwright.sync_api import BrowserContext, Page, expect
+import unittest
+
+from playwright.sync_api import Page
 
 @pytest.fixture(scope="session")
-def browser_context(browser):
-    context = browser.new_context()
-    yield context
-    context.close()
-
-@pytest.fixture(scope="function")
-def page(browser_context: BrowserContext):
-    page = browser_context.new_page()
-    page.goto("https://playwright.dev/")
+def setup(self, page: Page):
+    self.page = page
     yield page
-    page.close()
+    self.page.goto("https://www.google.com/")
+class MyTest(unittest.TestCase):
 
-class TestClass:
-    def test_has_title(self, page: Page):
-        expect(page).to_have_title(re.compile("Playwright"))
+    def test_foobar1(self, setup):
+        setup.locator("textarea[name='q']").fill("playwright1")
+        # self.page.locator("textarea[name='q']").fill("playwright1")
 
-    def test_get_started_link(self, page: Page):
-        page.get_by_role("link", name="Get started").click()
-        expect(page.get_by_role("heading", name="Installation")).to_be_visible()
+    def test_foobar2(self):
+        self.page.locator("textarea[name='q']").fill("playwright2")
+
+    def test_foobar3(self):
+        self.page.locator("textarea[name='q']").fill("playwright3")
+
+    def test_foobar4(self):
+        self.page.locator("textarea[name='q']").fill("playwright4")
+# @pytest.fixture(scope="class")
+# def fix_cls():
+#     print('fix_cls')
+#     data = []
+#     assert len(data) == 0
+#     yield data
+#     assert len(data) == 3
+
+
+# @pytest.fixture(scope="function")
+# def fix_func(fix_cls):
+#     print('fix_func')
+#     # reset the data, reload the page
+#     yield fix_cls
+#     print('------>', fix_cls)
+
+
+# class TestCls:
+#     def test_a1(self, fix_func):
+#         fix_func.append(1)
+
+#     def test_a2(self, fix_func):
+#         fix_func.append(2)
+
+#     def test_a3(self, fix_func):
+#         fix_func.append(3)
