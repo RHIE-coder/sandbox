@@ -7,6 +7,10 @@ authors = [
 ]
 dependencies = [
     "pytest-playwright>=0.5.1",
+    "python-dotenv>=1.0.1",
+    "google-api-python-client>=2.142.0",
+    "google-auth-httplib2>=0.2.0",
+    "google-auth-oauthlib>=1.2.1",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -20,6 +24,7 @@ pythonpath = "src"
 testpaths = "tests"
 
 [tool.rye.scripts]
+xenv = 'python src/samproj/env-test.py'
 thead = 'pytest --headed --slowmo 1000'
 
     # '--browser=chromium',
