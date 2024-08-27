@@ -5,6 +5,7 @@ build/
 dist/
 wheels/
 *.egg-info
+.pytest_cache
 
 # venv
 .venv
@@ -12,3 +13,6 @@ wheels/
 .env
 credentials.json
 token*
+
+# Jupyter Notebook
+.ipynb_checkpoints

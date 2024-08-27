@@ -2,6 +2,11 @@
 # import unittest
 
 from playwright.sync_api import Page
+from sam import hello
+
+def testMe(page):
+    hello.init()
+
 
 # @pytest.fixture(scope="session")
 # def setup(self, page: Page):
@@ -23,32 +28,32 @@ from playwright.sync_api import Page
 #     def test_foobar4(self):
 #         self.page.locator("textarea[name='q']").fill("playwright4")
 
-def step(page, description, func):
-    print(f"Step: {description}")
-    func(page)
-    print(f"Completed: {description}")
+# def step(page, description, func):
+#     print(f"Step: {description}")
+#     func(page)
+#     print(f"Completed: {description}")
 
-def test_example(page):
-    def step_1(page):
-        page.goto("https://www.google.com/")
+# def test_example(page):
+#     def step_1(page):
+#         page.goto("https://www.google.com/")
         
-    def step_2(page):
-        page.locator("textarea[name='q']").fill("playwright1")
+#     def step_2(page):
+#         page.locator("textarea[name='q']").fill("playwright1")
 
-    def step_3(page):
-        page.locator("textarea[name='q']").fill("playwright2")
+#     def step_3(page):
+#         page.locator("textarea[name='q']").fill("playwright2")
 
-    def step_4(page):
-        page.locator("textarea[name='q']").fill("playwright3")
+#     def step_4(page):
+#         page.locator("textarea[name='q']").fill("playwright3")
 
-    def step_5(page):
-        page.locator("textarea[name='q']").fill("playwright4")
+#     def step_5(page):
+#         page.locator("textarea[name='q']").fill("playwright4")
 
-    step(page, "step 1", step_1)
-    step(page, "step 2", step_2)
-    step(page, "step 3", step_3)
-    step(page, "step 4", step_4)
-    step(page, "step 5", step_5)
+#     step(page, "step 1", step_1)
+#     step(page, "step 2", step_2)
+#     step(page, "step 3", step_3)
+#     step(page, "step 4", step_4)
+#     step(page, "step 5", step_5)
 
 
 
