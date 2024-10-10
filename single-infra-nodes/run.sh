@@ -116,7 +116,7 @@ function display_help()
     echo -e
     echo -e "    ${TARGET}down${RESET}       ${INFO}container down${RESET}"
     echo -e
-    echo -e "    ${TARGET}vdown${RESET}     ${INFO}container down with volumes${RESET}"
+    echo -e "    ${TARGET}vdown${RESET}      ${INFO}container down with volumes${RESET}"
     echo -e
     echo -e "-------------------------------------"
 }
