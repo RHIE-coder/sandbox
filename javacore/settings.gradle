@@ -11,4 +11,5 @@ plugins {
 }
 
 rootProject.name = 'javacore'
+include('sub:core')
 include('app')

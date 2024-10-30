@@ -23,8 +23,6 @@ dependencies {
 
     // This dependency is used by the application.
     implementation libs.guava
-
-    implementation project(':sub:core')
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
@@ -36,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'myapp.App'
+    mainClass = 'org.example.App'
 }
 
 tasks.named('test') {
@@ -44,22 +42,15 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-tasks.create('hello') {
-    doLast {
-        println 'hello world'
-    }
-}
-
-
 sourceSets {
     main {
         java {
-            srcDirs = ['src/main']
+            srcDirs = ['source/main/java']
         }
     }
     test {
         java {
-            srcDirs = ['src/test']
+            srcDirs = ['source/test/java']
         }
     }
 }
