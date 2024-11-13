@@ -1,0 +1,32 @@
+[project]
+name = "image-resolver"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "rhie-coder", email = "quotia72@naver.com" }
+]
+dependencies = [
+    "pillow>=11.0.0",
+    "pytesseract>=0.3.13",
+    "easyocr>=1.7.2",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.rye.scripts]
+esmp="python src/sample-easyocr.py"
+tsmp="python src/sample-tesseract.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
