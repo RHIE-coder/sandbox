@@ -1,0 +1,29 @@
+[project]
+name = "justpy-app"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "rhie-coder", email = "quotia72@naver.com" }
+]
+dependencies = [
+    "justpy>=0.14.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.rye.scripts]
+main = "python src/main.py"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/justpy_app"]
