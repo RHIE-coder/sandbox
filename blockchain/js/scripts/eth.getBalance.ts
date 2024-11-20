@@ -11,9 +11,12 @@ import {
 } from "~/scripts/common"
 
 async function getBalance(provider: Provider, wallet: Wallet){
+    const address = "0xC3BC986F678c2008fc374712A8E9415c31B57012"
     const balanceWei = await provider.getBalance(wallet.address);
+    // const balanceWei = await provider.getBalance(address);
     const balanceEther = ethers.formatEther(balanceWei);
     console.log(`Balance of ${wallet.address}: ${balanceEther} ETH`);
+    // console.log(`Balance of ${address}: ${balanceEther} ETH`);
 }
 
 (async ()=> {
