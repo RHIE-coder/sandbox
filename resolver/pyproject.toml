@@ -22,8 +22,9 @@ managed = true
 dev-dependencies = []
 
 [tool.rye.scripts]
-esmp="python src/sample-easyocr.py"
-tsmp="python src/sample-tesseract.py"
+easyocr="python src/ocr/easyocr.py"
+tesseract="python src/ocr/tesseract.py"
+parse_csv="python src/csv/parse_csv.py"
 
 [tool.hatch.metadata]
 allow-direct-references = true

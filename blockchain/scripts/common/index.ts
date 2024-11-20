@@ -19,7 +19,7 @@ if(!L2_RPC_URL) {
 if(!L3_RPC_URL) {
     throw new ReferenceError("L3_URL is not exists")
 }
-
+console.log(PRIVATE_KEY)
 const providerL1 = new ethers.JsonRpcProvider(L1_RPC_URL);
 const providerL2 = new ethers.JsonRpcProvider(L2_RPC_URL);
 const providerL3 = new ethers.JsonRpcProvider(L3_RPC_URL);
