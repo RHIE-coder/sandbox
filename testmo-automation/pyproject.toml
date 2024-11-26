@@ -1,0 +1,59 @@
+[project]
+name = "testmo-automation"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "rhie-coder", email = "quotia72@naver.com" }
+]
+dependencies = [
+    "pytest-playwright>=0.6.1",
+    "jupyterlab>=4.3.1",
+    "playwright>=1.49.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = "services"
+testpaths = "testing"
+python_files = ["test_*.py"]
+python_functions = "test_"
+python_classes = "Test*"
+markers = [
+    'tinker',
+    'login',
+    'pick',
+    'home',
+]
+addopts = [
+    '--strict-markers',
+    '-v',
+    '--slowmo=1000',
+    # '--browser=chromium',
+    # '--browser=firefox',
+    # '--browser=webkit',
+    # '--json-report',
+    # '--json-report-file=json-reports/test-results.json',
+    # '--numprocesses=auto',
+    # '--output=test-results',
+    # '--tracing=retain-on-failure',    # on, off, retain-on-failure
+    # '--video=retain-on-failure',      # on, off, retain-on-failure
+    # '--screenshot=only-on-failure',   # on, off, only-on-failure
+    # '--html=reports/playwright-report.html',
+    # '--device=iPhone 11 Pro',
+    # --tb: choice: 'no' (choose from 'auto', 'long', 'short', 'no', 'line', 'native')
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/testmo_automation"]
