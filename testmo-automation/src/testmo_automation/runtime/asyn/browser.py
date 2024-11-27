@@ -29,6 +29,6 @@ async def load_default_page(*, reset_session=False):
     except:
         context = await chrome.new_context()
     page = await context.new_page()
-    await page.set_viewport_size({"width": 950, "height": 1800})
+    await page.set_viewport_size({"width": 950, "height": 1000})
     page.set_default_timeout(6000)
     return page
