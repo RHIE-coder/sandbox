@@ -22,6 +22,7 @@ managed = true
 dev-dependencies = []
 
 [tool.rye.scripts]
+init="python -m playwright install"
 collapse_folders="python src/testmo_automation/scripts/collapse_folders.py"
 main="python src/testmo_automation/main.py"
 
