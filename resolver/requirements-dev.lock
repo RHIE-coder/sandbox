@@ -10,12 +10,16 @@
 #   universal: false
 
 -e file:.
+chardet==5.2.0
+    # via image-resolver
 easyocr==1.7.2
     # via image-resolver
 filelock==3.16.1
     # via torch
 fsspec==2024.10.0
     # via torch
+html2text==2024.2.26
+    # via image-resolver
 imageio==2.36.0
     # via scikit-image
 jinja2==3.1.4
