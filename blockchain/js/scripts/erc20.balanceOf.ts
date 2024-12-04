@@ -23,9 +23,8 @@ async function balanceOf(provider:Provider, contractAddress:string, address:stri
 }
 
 (async ()=> {
-    console.log(chalk.bgGreen.bold("L3"))
-    await balanceOf(providerL3, CA.L3_ERC20,"0x6020be28F0814Cb0443A90e22B76a0a50c5214CB")
-    await balanceOf(providerL3, CA.L3_ERC20,"0x3a47f6e8d3BcFBb4f1582462f0020b05194994ee")
+    // console.log(chalk.bgGreen.bold("L3"))
+    // await balanceOf(providerL3, "0x5066926aa0038724423A03D68514b06d7a65812C","0xaaa85E444cfA3EA5F6bf65DDeb69b0d89037C754")
     console.log(chalk.bgGreen.bold("L2"))
-    await balanceOf(providerL2, CA.L2_ERC20,"0x3a47f6e8d3BcFBb4f1582462f0020b05194994ee")
+    await balanceOf(providerL2, "0x5066926aa0038724423A03D68514b06d7a65812C","0xd644352A429F3fF3d21128820DcBC53e063685b1")
 })()
