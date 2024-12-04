@@ -2,3 +2,4 @@ node_modules
 
 # local database (sensitive)
 .db.yaml
+.env

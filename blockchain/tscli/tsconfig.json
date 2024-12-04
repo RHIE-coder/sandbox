@@ -3,10 +3,12 @@
         "require": ["tsconfig-paths/register"]
     },
     "compilerOptions": {
-        "useDefineForClassFields": true,
+        "target": "es2020",
+        "module": "commonjs",
         "esModuleInterop": true,
-        "module": "CommonJS",
-        "target": "es2021",
+        "moduleResolution": "node",
+
+        "useDefineForClassFields": true,
         "skipLibCheck": true,
         "declaration": true,
         "declarationDir": "./types",
@@ -15,14 +17,16 @@
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
 
-        "baseUrl": "./",
-        "paths": {
-            "~/loader/*": ["./src/loader/*"],
-            "~/manager/*": ["./src/manager/*"],
-            "~/types/*": ["./src/types/*"],
-            "~/scripts/*": ["./src/scripts/*"]
-        },
-        "rootDir": "./",
+        "resolveJsonModule":true,
+
+        // "baseUrl": "./",
+        // "paths": {
+        //     "~/loader/*": ["./src/loader/*"],
+        //     "~/manager/*": ["./src/manager/*"],
+        //     "~/types/*": ["./src/types/*"],
+        //     "~/scripts/*": ["./src/scripts/*"]
+        // },
+        // "rootDir": "./",
         "outDir": "./build",
 
         /* Linting */
