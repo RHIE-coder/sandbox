@@ -20,8 +20,6 @@ async function getBalance(address: string | null){
 }
 
 (async()=>{
-
 })()
-
 
 
