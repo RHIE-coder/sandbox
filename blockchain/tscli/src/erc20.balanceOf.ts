@@ -3,9 +3,10 @@ import {
     getProvider,
     getWallet,
 } from "./common";
-import erc20ABI from "./abi/erc20.json";
+import erc20ABI from "./ethlib/abi/erc20.json";
 
 async function balanceOf(address: string | null){
+
 
     const provider:Provider = await getProvider()
     let target = null
@@ -27,5 +28,4 @@ async function balanceOf(address: string | null){
 
 
 (async()=>{
-    await balanceOf(null)
 })()
