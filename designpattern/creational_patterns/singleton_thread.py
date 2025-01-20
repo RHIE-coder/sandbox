@@ -21,40 +21,25 @@ class Singleton(metaclass=SingletonMeta):
         
     def some_biz_logic(self):
         ...
-    
-class Singleton2(metaclass=SingletonMeta):
 
-    value: str = None
-    
-    def __init__(self, value: str) -> None:
-        self.value = value
-
-    def some_biz_logic2(self):
-        ...
+def test_singleton(value: str) -> None:
+    singleton = Singleton(value)
+    print(singleton.value)
 
 if __name__ == "__main__":
     
-    s1 = Singleton(1)
-    s2 = Singleton(2)
+    process1 = Thread(target = test_singleton, args = ("FOO",))
+    process2 = Thread(target = test_singleton, args = ("BAR",))
+    process1.start()
+    process2.start()
     
-    print(id(s1) == id(s2))
-    
-    ss1 = Singleton2(11)
-    ss2 = Singleton2(22)
-    
-    print(id(ss1) == id(ss2))
-    
-    print(SingletonMeta._instances)
-
+    print(len(SingletonMeta._instances))
     
 ## OUTPUT
 """
-True
-True
-{
-    <class '__main__.Singleton'>: <__main__.Singleton object at 0x100563f50>,
-    <class '__main__.Singleton2'>: <__main__.Singleton2 object at 0x100563f80>
-}
+FOO
+FOO
+1
 """
 
 
