@@ -20,6 +20,7 @@ async function getBalance(address: string | null){
 }
 
 (async()=>{
+    await getBalance(null)
 })()
 
 

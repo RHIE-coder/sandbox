@@ -7,7 +7,7 @@ import erc20ABI from "./ethlib/abi/erc20.json";
 
 async function balanceOf(address: string | null){
 
-
+    const tokenAddress = '0x8575D59caB7355DF9DDd08e7F5B98eE0532A5824'
     const provider:Provider = await getProvider()
     let target = null
 

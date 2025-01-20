@@ -1,6 +1,6 @@
 import { Provider, Wallet, ethers } from 'ethers';
 import { getProvider, getWallet } from './common';
-import erc20ABI from './abi/erc20.json';
+import erc20ABI from './ethlib/abi/erc20.json';
 
 async function transfer(to: string | null, amount: string) {
 
@@ -8,7 +8,7 @@ async function transfer(to: string | null, amount: string) {
     if (!to) {
         throw new Error('Address is required');
     }
-
+    const tokenAddress = '0x5066926aa0038724423A03D68514b06d7a65812C'
     // Get provider and wallet (signer)
     const provider: Provider = await getProvider();
     const signer: Wallet = await getWallet();
