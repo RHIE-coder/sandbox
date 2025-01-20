@@ -39,4 +39,8 @@ async function transfer(to: string | null, amount: string) {
 }
 
 (async()=>{
+  await transfer('0xaaa85E444cfA3EA5F6bf65DDeb69b0d89037C754', '0')
+  // await transfer("0xC3BC986F678c2008fc374712A8E9415c31B57012", "7654321")
+  // await transfer("0x4614c14075a969A5F1FFD3961dE8A074a7BB8AfE", "1000")
+  // await transfer("0xaaa85E444cfA3EA5F6bf65DDeb69b0d89037C754", "1000")
 })()
