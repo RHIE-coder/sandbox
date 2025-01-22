@@ -8,7 +8,6 @@ class Command(ABC):
         pass
 
 class SimpleCommand(Command):
-
     def __init__(self, payload: str) -> None:
         self._payload = payload
     
