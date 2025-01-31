@@ -8,6 +8,8 @@ authors = [
 dependencies = [
     "rich>=13.9.4",
     "typer>=0.15.1",
+    "mypy>=1.14.1",
+    "pydantic>=2.10.6",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
@@ -22,6 +24,7 @@ dev-dependencies = []
 
 [tool.rye.scripts]
 main = "python -B -m src.main"
+myma = "python -B -m mypy src/main.py"
 
 [tool.hatch.metadata]
 allow-direct-references = true

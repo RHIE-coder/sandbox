@@ -10,12 +10,22 @@
 #   universal: false
 
 -e file:.
+annotated-types==0.7.0
+    # via pydantic
 click==8.1.8
     # via typer
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
+mypy==1.14.1
+    # via designpattern
+mypy-extensions==1.0.0
+    # via mypy
+pydantic==2.10.6
+    # via designpattern
+pydantic-core==2.27.2
+    # via pydantic
 pygments==2.19.1
     # via rich
 rich==13.9.4
@@ -26,4 +36,7 @@ shellingham==1.5.4
 typer==0.15.1
     # via designpattern
 typing-extensions==4.12.2
+    # via mypy
+    # via pydantic
+    # via pydantic-core
     # via typer
