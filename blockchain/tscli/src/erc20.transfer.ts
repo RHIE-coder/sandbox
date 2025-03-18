@@ -8,7 +8,9 @@ async function transfer(to: string | null, amount: string) {
     if (!to) {
         throw new Error('Address is required');
     }
-    const tokenAddress = '0x5066926aa0038724423A03D68514b06d7a65812C'
+    const tokenAddress = '0x3fc9db68F6c09089C25E2482A924c9B5C5996C46' // L1
+    // const tokenAddress = '0x0fE3B8330f253890848764B893530c21E768A798' // L2
+    // const tokenAddress = '0x3cfD5ac56480aF929E0D939637431b861781191A' // L3
     // Get provider and wallet (signer)
     const provider: Provider = await getProvider();
     const signer: Wallet = await getWallet();
@@ -41,4 +43,5 @@ async function transfer(to: string | null, amount: string) {
 }
 
 (async () => {
+    await transfer("0x9396Dd8852E41b8051C032a971995FB5a2B6E3D7", "200")
 })();
