@@ -1,11 +1,18 @@
 [project]
-name = "alembic"
+name = "alembic-sample"
 version = "0.1.0"
 description = "Add your description here"
 authors = [
     { name = "rhie-coder", email = "quotia72@naver.com" }
 ]
-dependencies = []
+dependencies = [
+    "alembic>=1.14.1",
+    "sqlalchemy>=2.0.38",
+    "mysql>=0.0.3",
+    "sqlalchemy-schemadisplay>=2.0",
+    "graphviz>=0.20.3",
+    "sqlmodel>=0.0.22",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 
