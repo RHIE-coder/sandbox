@@ -20,6 +20,9 @@ build-backend = "hatchling.build"
 managed = true
 dev-dependencies = []
 
+[tool.rye.script]
+server = "gunicorn -k eventlet -w 1 wsgi:app"
+
 [tool.hatch.metadata]
 allow-direct-references = true
 
