@@ -16,4 +16,4 @@ def handle_message(msg):
 
 if __name__ == '__main__':
     # 0.0.0.0: 외부에서 접속 가능하게
-    socketio.run(app, host='0.0.0.0', port=8000)
+    socketio.run(app, host="0.0.0.0", port=8000, server="eventlet")

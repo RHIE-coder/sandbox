@@ -6,6 +6,8 @@ authors = [
 ]
 dependencies = [
     "flask-socketio>=5.5.1",
+    "eventlet>=0.39.1",
+    "gunicorn>=23.0.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
