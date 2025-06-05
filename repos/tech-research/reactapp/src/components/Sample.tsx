@@ -1,11 +1,6 @@
-import React from 'react'
+import { useStore } from '@/stores/uiStore';
 
-export default function App() {
-
-  return (
-    <form onSubmit={() => alert('Submitting!')}>
-      <input />
-      <button>Send</button>
-    </form>
-  )
+export default function Sample() {
+  const bears = useStore((state) => state.bears)
+  return <h1>{bears} bears around here...</h1>
 }
