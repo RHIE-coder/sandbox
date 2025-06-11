@@ -33,7 +33,6 @@
     "@vitejs/plugin-react": "^4.5.1",
     "autoprefixer": "^10.4.21",
     "electron": "36.4.0",
-    "electron-vite": "^3.1.0",
     "eslint": "^8.57.1",
     "eslint-plugin-import": "^2.31.0",
     "postcss": "^8.5.4",
@@ -43,14 +42,12 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@handsontable/react-wrapper": "^15.3.0",
+    "@glideapps/glide-data-grid": "^6.0.3",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/postcss": "^4.1.8",
-    "ag-grid-react": "^33.3.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "electron-squirrel-startup": "^1.0.1",
-    "handsontable": "^15.3.0",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
